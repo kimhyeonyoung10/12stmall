@@ -22,9 +22,7 @@ public class PolicyHandler {
     @StreamListener(KafkaProcessor.INPUT)
     public void whatever(@Payload String eventString) {}
 
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='OrderPlaced'"
+    @StreamListener(value = KafkaProcessor.INPUT, condition = "headers['type']=='OrderPlaced'"
     )
     public void wheneverOrderPlaced_StartDelivery(
         @Payload OrderPlaced orderPlaced
@@ -41,9 +39,6 @@ public class PolicyHandler {
         @Payload OrderCancelled orderCancelled
     ) {
         OrderCancelled event = orderCancelled;
-        System.out.println(
-            "\n\n##### listener CancelDelivery : " + orderCancelled + "\n\n"
-        );
 
         // Sample Logic //
         Delivery.cancelDelivery(event);

@@ -74,6 +74,7 @@ public class MyPageViewHandler {
                 // view 객체에 이벤트의 eventDirectValue 를 set 함
                 myPage.setStatus(String.valueOf(deliveryReturned.getStatus()));
                 myPage.setCourier(deliveryReturned.getCourier());
+                myPage.setProductName(deliveryReturned.getProductName());
                 // view 레파지 토리에 save
                 myPageRepository.save(myPage);
             }
